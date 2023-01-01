@@ -1,0 +1,82 @@
+#include<stdio.h>
+#include<math.h>
+int deter(int num)
+{
+    int m;
+    for(m=0;m<=num;m++)
+    {
+        if(num==pow(2,m))
+        {
+            return 1;
+            break;
+        }
+        else
+            continue;
+    }
+    return 0;
+}
+int main()
+{
+    int n,count=0,N;
+    scanf("%d",&n);
+    N=n;
+    if(n%2==0&&n!=1)
+    {
+        if(deter(n)==1)
+        {
+            while(n!=1)
+            {
+                n=n/2;
+                printf("^");
+                count++;
+            }
+        }
+        if(deter(n)==0)
+        {
+            while(n!=1)
+            {
+                n=n/2;
+                printf("^");//sign[i]='^';i++;
+                count++;
+                if(n==1)
+                    break;
+                n=n-1;
+                printf("-");
+                count++;
+            }
+        }
+    }
+    if((N-1)%2==0&&N!=1)
+    {
+        if(deter(N-1)==0)
+        {
+            N=N-1;
+            printf("-");
+            count++;
+            while(N!=1)
+            {
+                N=N/2;
+                printf("^");
+                count++;
+                if(N==1)
+                    break;
+                N=N-1;
+                printf("-");
+                count++;
+            }
+        }
+        if(deter(N-1)==1)
+        {
+            N=N-1;
+            printf("-");//sign[i]='-';i++;
+            count++;
+            while(N!=1)
+            {
+               N=N/2;
+               printf("^");
+               count++;
+            }
+        }
+    }
+    printf("\n%d",count);
+}
